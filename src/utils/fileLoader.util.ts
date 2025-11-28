@@ -3,7 +3,7 @@ import logger from "@/config/logger.config";
 
 export class FileLoader {
   static async loadContext(
-    filename: string = "dashboard-info.txt"
+    filename: string = "instructions.txt"
   ): Promise<string> {
     try {
       const filePath = path.join(process.cwd(), filename);

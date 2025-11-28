@@ -7,9 +7,9 @@ async function runIngestion() {
   console.log("🚀 Starting One-Time Ingestion...");
 
   // 1. File Load
-  const rawText = await FileLoader.loadContext("dashboard-info.txt");
+  const rawText = await FileLoader.loadContext("instructions.txt");
   if (!rawText) {
-    console.error("❌ File dashboard-info.txt nahi mili!");
+    console.error("❌ File instructions.txt nahi mili!");
     return;
   }
   console.log(`📄 File read length: ${rawText.length}`);
@@ -26,7 +26,7 @@ async function runIngestion() {
   // 3. Embeddings Generate karo
   const embeddings = AIConfig.embeddingModel;
 
-  console.log("⏳ Creating Vector Store (Thoda wait karein)...");
+  console.log("⏳ Creating Vector Store (Please wait)...");
 
   // 4. Save to Folder 'vector_store_index'
   const vectorStore = await HNSWLib.fromDocuments(docs, embeddings);
