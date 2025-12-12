@@ -1,40 +1,3 @@
-// import AIConfig from "@/config/ai.config";
-// import logger from "@/config/logger.config";
-// import { StringOutputParser } from "@langchain/core/output_parsers";
-// import { ChatPromptTemplate } from "@langchain/core/prompts";
-
-// class AIService {
-//   static async generateAnswer(question: string, contextData: string = "") {
-//     try {
-//       const prompt = ChatPromptTemplate.fromMessages([
-//         [
-//           "system",
-//           `You are a helpful assistant for a dashboard.
-//            Answer the user's question based on the following context only:
-//            {context}
-
-//            If the answer is not in the context, say "I don't have information about that."`,
-//         ],
-//         ["user", "{question}"],
-//       ]);
-
-//       const chain = prompt.pipe(AIConfig.model).pipe(new StringOutputParser());
-
-//       const response = await chain.invoke({
-//         context: contextData || "No context provided yet.",
-//         question: question,
-//       });
-
-//       return response;
-//     } catch (error) {
-//       logger.error("AI Service Error:", error);
-//       throw new Error("Failed to generate AI response");
-//     }
-//   }
-// }
-
-// export default AIService;
-
 import AIConfig from "@/config/ai.config";
 import { HNSWLib } from "@langchain/community/vectorstores/hnswlib";
 import { StringOutputParser } from "@langchain/core/output_parsers";
@@ -51,17 +14,24 @@ class AIService {
     const promptTemplate = ChatPromptTemplate.fromMessages([
       [
         "system",
-        `You are the specialized AI Assistant for **ORIO OMS (Order Management System)**.
-     Your job is to help users navigate and understand the ORIO Dashboard based strictly on the provided context.
-     
-     Context:
+        `You are the **Professional ORIO OMS Consultant**, a specialized AI assistant for the ORIO Order Management System.
+     Your role is to provide accurate, helpful, and professional guidance to users navigating the ORIO Dashboard.
+
+     **Context:**
      {context}
 
-     **Rules:**
-     1. Answer only using the context provided.
-     2. If the answer is not in the context, DO NOT make up an answer.
-     3. Instead, reply exactly with: "I am the ORIO OMS Assistant. My knowledge is limited to the ORIO Dashboard and its features, so I cannot answer this specific question."
-     4. Keep answers concise and professional.`,
+     **Response Guidelines:**
+     1.  **Professional Tone:** Maintain a polite, corporate, and supportive tone at all times. Avoid robotic or abrupt language.
+     2.  **Context-Driven Answers:** If the answer is explicitly found in the provided context, answer clearly and concisely.
+     3.  **Intelligent Inference:** If a user asks about a term that is slightly different from the context (e.g., "estimated outstanding" vs "Estimated Available for Withdrawal"), use your judgment to infer the user's intent and provide the most relevant information. Phrase it helpfully, like "It sounds like you might be referring to..."
+     4.  **Generic Fallbacks (No Flat Refusals):**
+         - If the specific answer is not in the context, **do not** say "I cannot answer."
+         - Instead, pivot helpfuly: "While my current records focus primarily on the ORIO Dashboard features detailed here, that specific topic seems to be outside the immediate documentation. However, if it relates to [closest relevant topic in context], I can tell you that..." or "I recommend checking the specific section in the dashboard for real-time details."
+     5.  **Conciseness:** Keep your responses professional and to the point.
+
+     **Formatting Rules (Strictly Follow):**
+     - **Bullet Points:** ALWAYS use bullet points for lists, steps, or features. Do not use block paragraphs for multiple items.
+     - **Bold Text:** ALWAYS use **bold** markdown for key terms, section headers, specific metric names, or important emphasis.`,
       ],
       ["user", "{question}"],
     ]);
@@ -69,31 +39,6 @@ class AIService {
     const chain = promptTemplate
       .pipe(AIConfig.chatModel)
       .pipe(new StringOutputParser());
-    // try {
-    //   const prompt = ChatPromptTemplate.fromMessages([
-    //     [
-    //       "system",
-    //       `You are a helpful assistant for a dashboard.
-    //        Answer the user's question based on the following context only:
-    //        {context}
-
-    //        If the answer is not in the context, say "I don't have information about that."`,
-    //     ],
-    //     ["user", "{question}"],
-    //   ]);
-
-    //   const chain = prompt.pipe(AIConfig.model).pipe(new StringOutputParser());
-
-    //   const response = await chain.invoke({
-    //     context: contextData || "No context provided yet.",
-    //     question: question,
-    //   });
-
-    //   return response;
-    // } catch (error) {
-    //   logger.error("AI Service Error:", error);
-    //   throw new Error("Failed to generate AI response");
-    // }
     return chain.invoke({
       context: contextData || "No context provided yet.",
       question: question,
