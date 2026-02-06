@@ -9,6 +9,14 @@ export const chatValidation = z.object({
       })
       .min(2, "Question must be at least 2 characters long")
       .max(1000, "Question must be at most 1000 characters long"),
+    history: z
+      .array(
+        z.object({
+          role: z.enum(["user", "model"]),
+          content: z.string(),
+        }),
+      )
+      .optional(),
   }),
 });
 

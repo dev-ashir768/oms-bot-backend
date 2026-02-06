@@ -13,7 +13,10 @@ class ChatController {
 
   chat = catchAsync(async (req: Request, res: Response) => {
     const data: ChatValidationType = req.body;
-    const response = await this.chatService.processQuestion(data.question);
+    const response = await this.chatService.processQuestion(
+      data.question,
+      data.history,
+    );
     ResponseUtil.success(res, response, "Answer generated successfully");
   });
 }
