@@ -1,8 +1,8 @@
 module.exports = {
   apps : [{
     name: "bot-backend",
-    script: "./src/index.ts", // Replace with your actual entry file
-    interpreter: "bun",       // Use "node" if you aren't using Bun
+    script: "./src/server.ts",
+    interpreter: "bun",
     env: {
       NODE_ENV: "development",
     },
