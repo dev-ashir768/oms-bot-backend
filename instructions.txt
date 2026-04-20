@@ -565,61 +565,150 @@ The copy shipments button which makes a table format copy of all the shipments N
 Updated Queries
 
 
-4. Where can I track the full journey of my parcels?
-In the Shipments page select a specific shipment then a action button is appeared in that user can select bulk tracking and single tracking in that you can track the whole journey of your order.
-5. How can I integrate my courier accounts with this system?
-Go to the integration page which is on the side bar menu in there you will see a flow chart diagram view in the end of that diagram there is are default coriers present you can select them or click on the add button on the side in that you can add your own courier as well.
+1. Where can I track the full journey of my parcels?
+In the Shipments page select a specific shipment then a action button is
+appeared in that user can select bulk tracking and single tracking in that you can track the whole journey of your order.
 
-6. How do I connect my Shopify account?
-Go to the integration page which is on the side bar menu in there you will see a flow chart diagram view on the top of the diagram there are default store presents  you can select them or click on the add button on the side in that you can add your own store asn well.
-7. How does Shopify syncing work in this system?
+2. How can I integrate my courier accounts with this system?
+Go to the integration page which is on the side bar menu in there you will
+see a flow chart diagram view in the end of that diagram there is are default coriers present you can select them or click on the add button on the side in that you can add your own courier as well.
+
+3. How do I connect my Shopify account?
+Go to the integration page which is on the side bar menu in there you will see a flow chart diagram view on the top of the diagram there are default store presents  you can select them or click on the add button on the side in that you can add your own store as well.
+For more details go to development center
+4. How does Shopify syncing work in this system?
 pan store ki detail add krein toh sync hojayega
-8. Where can I get access to the OMS open APIs?
+
+5. Where can I get access to the OMS open APIs?
 Answer:
 On the top navbar click on the development center button and from there it will redirect you a page where there are alot of options select the open API tab to get OMS Open API.
 
-9. How can I fetch my previous Shopify orders?
+6. How can I fetch my previous Shopify orders?
 Answers:
 In the sidebar menu click on the orders menu in that go to the orders page from there you will see a datatable on the top right hand side go on the refresh icon clicking it will open a filter modal in that select the platform, date, end date and order number then click fetch order button from there you will get your orders.
-10. How can I manage my inventory here?
-????
-11. How can I automate my order booking process?
+
+
+
+8. How can I automate my order booking process?
 Answer:
 On the sidebar menu click on the orio rules menu that will redirect you to the rules page on the top right hande side of the page there is a button named create rules click on that it will go to a selection form fill that form according to your requirements.
-12. How can I view the line items inside an order?
-Answer: 
+
+9. How can I view the line items inside an order?
+Answer:
 In the sidebar menu click on the orders menu in that go to the orders page from there you will see a datatable on the top right hand side go on the Line chart icon there are three versions of the table V1,V2 and V3 you need to select V3 in that table you can see the line item product.
 
-13. Where and how can I customize my shipping labels/prints?
+10. Where and how can I customize my shipping labels/prints?
 Answer:
 On the sidebar menu go the settings menu in that select general settings that will redirect you to general settings page from there you will see differect tabs select the Picklist & Print Settings tab which will open Picklist & Print Settings select the options according to you requirements then press save.
 
-14. Is bulk printing available for 3PL orders?
+11. Is bulk printing available for 3PL orders?
 Answer:
 Yes.
-15. How can I connect WhatsApp with this system?
-Answer: 
+
+12. How can I connect WhatsApp with this system?
+Answer:
 There are two ways to connect WhatsApp on OMS first is go to general settings page from there select WhatsApp settings tab select the options and provide your WhatsApp active number.
 Second way is to go to development center page and select the whatsapp connect tab there you will find a full step by step tutorial to connect your WhatsApp on OMS
 
-16. How can I update my order statuses?
+12. How can I update my order statuses?
 Answer:
 The order status is updated automatically through the 3pl couriers.
 
-17. After booking an order, how long does it usually take for the status to update?
+13. After booking an order, how long does it usually take for the status to update?
 Answer:
 It usually take upto 1 to 2 working days sometimes it depends on the 3pl courier provided.
 
-18. How can I identify orders that have been stuck in a pending status for too long?
+14. How can I identify orders that have been stuck in a pending status for too long?
 Go to the reports on the sidebar menu option from there you can select shipments ageing summary and courier insights from there you can see a analytic table view in whichyou can find the order with pending status for too long.
 
-19. Which courier is the best in terms of low return ratio and wide delivery coverage?
+15. Which courier is the best in terms of low return ratio and wide delivery coverage?
 Answer:
 Go to the reports on the sidebar menu option from there you can select courier performance there you can check the analytics of every courier.
-20. I don’t have my own courier account, how can I still book orders through this portal?
+
+16. I don’t have my own courier account, how can I still book orders through this portal?
 Answer:
 When onboarding OMS there is by default setting that your account will be managed by Orio to use a diiferent courier service contact your sales person from there you will be provided a tariff from there you can need to create a pickup location settings menu go to pickup locations and on the top right hande side click the add pickup location button which will open a filter form modal fill it according to your requirements after that you can start making your bookings. 
-21. How can I check courier tariffs and pricing?
+
+17. How can I check courier tariffs and pricing?
 Answer:
 When onboarding the sales person provides you the tariffs and courier pricing and you can also go the orders page select the calculate filter button there fill the courier details from there you will get fare details.
+
+Loadsheet Module :
+
+1. How to create a loadsheet?
+Answer:
+On the sidebar go to Shipments menu item in that select Load Sheets from there go the page and from there click on the datatable create loadsheet filter button then on the next page add the CN and click the checkbox it wil open multiple options which you can select tto create loadsheet.
+
+There are three ways to create Load Sheet:
+Single
+Scanning the CN QR code
+Multiple Load Sheet.
+
+2. Can I delete a specific CN from a loadsheet?
+Answer:
+You can remove a particular CN but cannot delete it Permanently.
+
+
+Pickup location Module
+
+1. What is pickup locations?
+Answer:
+It is Courier instructions for riders to pick your shipment from your warehouse or store.
+
+2. Can we add multiple pickup location?
+Yes
+
+3. How can I add mapping feature?
+Answer:
+This is a advance courier feature which is only available on some courier services for more details review your courier service provider.
+
+
+
+
+Bulk Orders Booking:
+
+1. How to a create an order on OMS?
+Answer:
+There two ways to create an order on OMS:
+Create a Single Order:
+On the top of the sidebar click the button create order from there create order page will open then
+select the stores in that dropdown select your store and then fill the form according to your requirements.
+Create Bulk Orders Booking:
+In this module you can upload your all orders excel file and create bulk orders at once simply you just have to follow the OMS bulk order file format to successfully create all bulk order.
+
+
+2. How many bulk orders can I upload on OMS?
+Answer:
+More Than 500 simultaneously.
+
+3. Where can I get the excel format to upload bulk orders?
+Answer:
+Go the bulk Order Booking Page from rigth on the right hand side there is a download link from there you can get a excel format file format to upload bul orders.
+
+
+Rember that pickup and pickup location are two different things:
+
+
+Picklist:
+
+1. How to create a picklist on OMS?
+Anwer:
+On the Order page select a order by cliking on checkbox after that slect the perform action dropdown button in that select create picklist.
+
+2. What is Picklist on OMS?
+Answer:
+
+Pick list is created to manage warehouse inventory when a order is booked there is a picklist created to identify the products in a specific order.
+
+
+Shopify:
+
+1. How to sync product inventory from OMS to shopify?
+Answer:
+First, integrate your Shopify store with the OMS. After that, go to the integration page where you will see your locations listed in the second row. Map these locations with your Shopify locations accordingly.
+If you have more than one location in Shopify, you should create an additional location in the OMS and map all Shopify locations with the corresponding OMS locations.
+Next, go to the Products tab. At the top, you will find the option for bulk product import. From there, select your Shopify store and import your products. Once imported, your products will automatically appear in the system and will be synced.
+After this, you can go to the Inventory tab to view your products and their variations location-wise. You can also update inventory from there if needed.
+If your products or inventory are synced from Shopify, any updates made in the OMS will also be reflected in Shopify. Similarly, any inventory changes made in Shopify will automatically update in the OMS.
+This completes the two-way inventory synchronization between Shopify and the OMS.
 
