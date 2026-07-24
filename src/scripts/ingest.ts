@@ -1,7 +1,8 @@
-import { HNSWLib } from "@langchain/community/vectorstores/hnswlib";
+import { LocalIndex } from "vectra";
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 import { FileLoader } from "@/utils/fileLoader.util";
 import AIConfig from "@/config/ai.config";
+import path from "path";
 
 async function runIngestion() {
   console.log("🚀 Starting One-Time Ingestion...");
@@ -23,17 +24,28 @@ async function runIngestion() {
   const docs = await splitter.createDocuments([rawText]);
   console.log(`✅ Text split into ${docs.length} chunks.`);
 
-  // 3. Embeddings Generate karo
-  const embeddings = AIConfig.embeddingModel;
+  // 3. Vectra index create karo (fresh)
+  const directory = path.join(process.cwd(), "vector_store_index");
+  const index = new LocalIndex(directory);
+  if (await index.isIndexCreated()) {
+    await index.deleteIndex();
+  }
+  await index.createIndex();
 
   console.log("⏳ Creating Vector Store (Please wait)...");
 
-  // 4. Save to Folder 'vector_store_index'
-  const vectorStore = await HNSWLib.fromDocuments(docs, embeddings);
-  const directory = "./vector_store_index";
-  await vectorStore.save(directory);
+  // 4. Embeddings generate kar ke index mein save karo
+  const texts = docs.map((doc) => doc.pageContent);
+  const vectors = await AIConfig.embeddingModel.embedDocuments(texts);
 
-  console.log(`🎉 Success! Data saved to '${directory}' folder.`);
+  for (let i = 0; i < texts.length; i++) {
+    await index.insertItem({
+      vector: vectors[i]!,
+      metadata: { text: texts[i]! },
+    });
+  }
+
+  console.log(`🎉 Success! ${texts.length} items saved to '${directory}'.`);
 }
 
 runIngestion();

@@ -1,5 +1,5 @@
 import AIConfig from "@/config/ai.config";
-import { HNSWLib } from "@langchain/community/vectorstores/hnswlib";
+import { LocalIndex } from "vectra";
 import { StringOutputParser } from "@langchain/core/output_parsers";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import path from "path";
@@ -10,9 +10,12 @@ class AIService {
     history: { role: "user" | "model"; content: string }[] = [],
   ) {
     const directory = path.join(process.cwd(), "vector_store_index");
-    const vectorStore = await HNSWLib.load(directory, AIConfig.embeddingModel);
-    const results = await vectorStore.similaritySearch(question, 4);
-    const contextData = results.map((res) => res.pageContent).join("\n\n");
+    const index = new LocalIndex(directory);
+    const queryVector = await AIConfig.embeddingModel.embedQuery(question);
+    const results = await index.queryItems(queryVector, 4);
+    const contextData = results
+      .map((res) => res.item.metadata.text as string)
+      .join("\n\n");
 
     const historyMessages = history.map((msg) => [
       msg.role === "user" ? "user" : "assistant",
